@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Sparkles, FileText, BarChart3, Settings, LogOut, Loader2, User, RefreshCw, Star, TrendingUp, Edit3, Layout, CopyCheck, CalendarDays } from "lucide-react";
+import { Sparkles, FileText, BarChart3, Settings, LogOut, Loader2, User, RefreshCw, Star, TrendingUp, Edit3, Layout, CopyCheck, CalendarDays, ImageIcon, MessageCircle } from "lucide-react";
 
 // Import tab components
 import GenerateTab from "./tabs/generate";
@@ -14,8 +14,10 @@ import TrendingTab from "./tabs/trending";
 import TemplatesTab from "./tabs/templates";
 import RemixTab from "./tabs/remix";
 import ContentPlanTab from "./tabs/content_plan";
+import PostCardTab from "./tabs/postcard";
+import CommentReplyTab from "./tabs/comment_reply";
 
-type TabId = "generate" | "history" | "analyze" | "rewrite" | "trending" | "templates" | "remix" | "contentPlan";
+type TabId = "generate" | "history" | "analyze" | "rewrite" | "trending" | "templates" | "remix" | "contentPlan" | "postcard" | "commentReply";
 
 const TABS: { id: TabId; label: string; icon: any; color: string }[] = [
   { id: "generate", label: "生成内容", icon: Sparkles, color: "emerald" },
@@ -26,6 +28,8 @@ const TABS: { id: TabId; label: string; icon: any; color: string }[] = [
   { id: "templates", label: "模板库", icon: Layout, color: "indigo" },
   { id: "contentPlan", label: "内容排期", icon: CalendarDays, color: "teal" },
   { id: "remix", label: "爆文克隆", icon: CopyCheck, color: "rose" },
+  { id: "postcard", label: "图文排版", icon: ImageIcon, color: "pink" },
+  { id: "commentReply", label: "评论回复", icon: MessageCircle, color: "blue" },
 ];
 
 export default function DashboardPage() {
@@ -97,6 +101,10 @@ export default function DashboardPage() {
         return <RemixTab token={token} />;
       case "contentPlan":
         return <ContentPlanTab token={token} />;
+      case "postcard":
+        return <PostCardTab />;
+      case "commentReply":
+        return <CommentReplyTab />;
       default:
         return null;
     }
