@@ -12,13 +12,14 @@ import AnalyzeTab from "./tabs/analyze";
 import RewriteTab from "./tabs/rewrite";
 import TrendingTab from "./tabs/trending";
 import TemplatesTab from "./tabs/templates";
+import ImageFactoryTab from "./tabs/image_factory";
 import RemixTab from "./tabs/remix";
 import ContentPlanTab from "./tabs/content_plan";
 import PostCardTab from "./tabs/postcard";
 import CommentReplyTab from "./tabs/comment_reply";
 import SmartWorkflowTab from "./tabs/smart_workflow";
 
-type TabId = "generate" | "history" | "analyze" | "rewrite" | "trending" | "templates" | "remix" | "contentPlan" | "postcard" | "commentReply" | "smartWorkflow";
+type TabId = "generate" | "history" | "analyze" | "rewrite" | "trending" | "templates" | "remix" | "contentPlan" | "postcard" | "commentReply" | "smartWorkflow" | "imageFactory";
 
 const TABS: { id: TabId; label: string; icon: any; color: string }[] = [
   { id: "smartWorkflow", label: "智能工厂", icon: Sparkles, color: "amber" },
@@ -32,6 +33,7 @@ const TABS: { id: TabId; label: string; icon: any; color: string }[] = [
   { id: "remix", label: "爆文克隆", icon: CopyCheck, color: "rose" },
   { id: "postcard", label: "图文排版", icon: ImageIcon, color: "pink" },
   { id: "commentReply", label: "评论回复", icon: MessageCircle, color: "blue" },
+  { id: "imageFactory", label: "图文工厂", icon: ImageIcon, color: "pink" },
 ];
 
 export default function DashboardPage() {
@@ -107,6 +109,8 @@ export default function DashboardPage() {
         return <PostCardTab />;
       case "smartWorkflow":
         return <SmartWorkflowTab />;
+      case "imageFactory":
+        return <ImageFactoryTab />;
       case "commentReply":
         return <CommentReplyTab />;
       default:
