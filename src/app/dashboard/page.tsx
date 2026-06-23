@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Sparkles, FileText, BarChart3, Settings, LogOut, Loader2, User, RefreshCw, Star, TrendingUp, Edit3, Layout, CopyCheck } from "lucide-react";
+import { Sparkles, FileText, BarChart3, Settings, LogOut, Loader2, User, RefreshCw, Star, TrendingUp, Edit3, Layout, CopyCheck, CalendarDays } from "lucide-react";
 
 // Import tab components
 import GenerateTab from "./tabs/generate";
@@ -13,8 +13,9 @@ import RewriteTab from "./tabs/rewrite";
 import TrendingTab from "./tabs/trending";
 import TemplatesTab from "./tabs/templates";
 import RemixTab from "./tabs/remix";
+import ContentPlanTab from "./tabs/content_plan";
 
-type TabId = "generate" | "history" | "analyze" | "rewrite" | "trending" | "templates" | "remix";
+type TabId = "generate" | "history" | "analyze" | "rewrite" | "trending" | "templates" | "remix" | "contentPlan";
 
 const TABS: { id: TabId; label: string; icon: any; color: string }[] = [
   { id: "generate", label: "生成内容", icon: Sparkles, color: "emerald" },
@@ -23,6 +24,7 @@ const TABS: { id: TabId; label: string; icon: any; color: string }[] = [
   { id: "history", label: "历史记录", icon: FileText, color: "orange" },
   { id: "analyze", label: "竞品分析", icon: BarChart3, color: "pink" },
   { id: "templates", label: "模板库", icon: Layout, color: "indigo" },
+  { id: "contentPlan", label: "内容排期", icon: CalendarDays, color: "teal" },
   { id: "remix", label: "爆文克隆", icon: CopyCheck, color: "rose" },
 ];
 
@@ -93,6 +95,8 @@ export default function DashboardPage() {
         return <TemplatesTab token={token} />;
       case "remix":
         return <RemixTab token={token} />;
+      case "contentPlan":
+        return <ContentPlanTab token={token} />;
       default:
         return null;
     }
@@ -153,6 +157,8 @@ export default function DashboardPage() {
             const isActive = tab === t.id;
             const colors: Record<string, string> = {
               emerald: isActive ? "bg-emerald-500 text-white shadow-md" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700",
+              teal: isActive ? "bg-teal-500 text-white shadow-md" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700",
+              indigo: isActive ? "bg-indigo-500 text-white shadow-md" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700",
               purple: isActive ? "bg-purple-500 text-white shadow-md" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700",
               blue: isActive ? "bg-blue-500 text-white shadow-md" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700",
               orange: isActive ? "bg-orange-500 text-white shadow-md" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700",
