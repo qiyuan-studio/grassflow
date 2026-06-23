@@ -16,10 +16,12 @@ import RemixTab from "./tabs/remix";
 import ContentPlanTab from "./tabs/content_plan";
 import PostCardTab from "./tabs/postcard";
 import CommentReplyTab from "./tabs/comment_reply";
+import SmartWorkflowTab from "./tabs/smart_workflow";
 
-type TabId = "generate" | "history" | "analyze" | "rewrite" | "trending" | "templates" | "remix" | "contentPlan" | "postcard" | "commentReply";
+type TabId = "generate" | "history" | "analyze" | "rewrite" | "trending" | "templates" | "remix" | "contentPlan" | "postcard" | "commentReply" | "smartWorkflow";
 
 const TABS: { id: TabId; label: string; icon: any; color: string }[] = [
+  { id: "smartWorkflow", label: "智能工厂", icon: Sparkles, color: "amber" },
   { id: "generate", label: "生成内容", icon: Sparkles, color: "emerald" },
   { id: "rewrite", label: "批量改写", icon: Edit3, color: "purple" },
   { id: "trending", label: "趋势热点", icon: TrendingUp, color: "blue" },
@@ -103,6 +105,8 @@ export default function DashboardPage() {
         return <ContentPlanTab token={token} />;
       case "postcard":
         return <PostCardTab />;
+      case "smartWorkflow":
+        return <SmartWorkflowTab />;
       case "commentReply":
         return <CommentReplyTab />;
       default:
@@ -171,6 +175,7 @@ export default function DashboardPage() {
               blue: isActive ? "bg-blue-500 text-white shadow-md" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700",
               orange: isActive ? "bg-orange-500 text-white shadow-md" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700",
               pink: isActive ? "bg-pink-500 text-white shadow-md" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700",
+            amber: isActive ? "bg-amber-500 text-white shadow-md" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700",
               rose: isActive ? "bg-rose-500 text-white shadow-md" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700",
             };
             return (
